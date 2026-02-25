@@ -1,3 +1,15 @@
 spring:
   application:
     name: login
+
+  security:
+      oauth2:
+        client:
+          registration:
+            kakao:
+              client-id: ${KAKAO_REST_API_KEY}
+              client-secret: ${KAKAO_CLIENT_SECRET}
+              redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
+              authorization-grant-type: authorization_code
+              client-authentication-method: client_secret_post
+              client-name: Kakao
