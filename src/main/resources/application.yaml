@@ -2,10 +2,22 @@ spring:
   application:
     name: login
 
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/connecteamed_db}
+    username: ${SPRING_DATASOURCE_USERNAME:connecteamed}
+    password: ${SPRING_DATASOURCE_PASSWORD:connecteamed}
+    driver-class-name: org.postgresql.Driver
+
   security:
       oauth2:
         client:
           registration:
+            google:
+              client-id: ${GOOGLE_CLIENT_ID}
+              client-secret: ${GOOGLE_CLIENT_SECRET}
+              scope:
+                - email
+                - profile
             kakao:
               client-id: ${KAKAO_REST_API_KEY}
               client-secret: ${KAKAO_CLIENT_SECRET}
@@ -13,3 +25,6 @@ spring:
               authorization-grant-type: authorization_code
               client-authentication-method: client_secret_post
               client-name: Kakao
+              scope:
+                - account_email
+                - profile_nickname
