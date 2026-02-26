@@ -1,15 +1,15 @@
-package likelion.beanBa.backendProject.member.auth.controller;
+package com.login.server.login.global.member.auth.controller;
 
 import jakarta.validation.Valid;
-import likelion.beanBa.backendProject.member.auth.dto.*;
-import likelion.beanBa.backendProject.member.auth.service.AuthService;
-import likelion.beanBa.backendProject.member.dto.SignupRequest;
-import likelion.beanBa.backendProject.member.email.service.EmailAuthService;
-import likelion.beanBa.backendProject.member.email.service.EmailService;
-import likelion.beanBa.backendProject.member.repository.MemberRepository;
-import likelion.beanBa.backendProject.member.security.annotation.CurrentUser;
-import likelion.beanBa.backendProject.member.security.service.CustomUserDetails;
-import likelion.beanBa.backendProject.member.service.MemberService;
+import com.login.server.global.member.auth.dto.*;
+import com.login.server.global.member.auth.service.AuthService;
+import com.login.server.global.member.dto.SignupRequest;
+import com.login.server.global.member.email.service.EmailAuthService;
+import com.login.server.global.member.email.service.EmailService;
+import com.login.server.global.member.repository.MemberRepository;
+import com.login.server.global.member.security.annotation.CurrentUser;
+import com.login.server.global.member.security.service.CustomUserDetails;
+import com.login.server.global.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

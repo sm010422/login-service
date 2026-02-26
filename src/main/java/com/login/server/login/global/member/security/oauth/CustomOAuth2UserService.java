@@ -1,16 +1,17 @@
-package likelion.beanBa.backendProject.member.security.oauth;
+package com.login.server.login.global.member.security.oauth;
 
-import likelion.beanBa.backendProject.member.Entity.Member;
-import likelion.beanBa.backendProject.member.repository.MemberRepository;
-import likelion.beanBa.backendProject.member.security.service.CustomUserDetails;
-import lombok.RequiredArgsConstructor;
+import java.util.Map;
+
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
+import com.login.server.login.global.member.Entity.Member;
+import com.login.server.login.global.member.repository.MemberRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor

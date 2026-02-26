@@ -1,4 +1,4 @@
-package likelion.beanBa.backendProject.member.security.annotation;
+package com.login.server.login.global.member.security.annotation;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 

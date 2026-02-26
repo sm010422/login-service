@@ -1,7 +1,7 @@
-package likelion.beanBa.backendProject.member.repository;
+package com.login.server.login.global.member.repository;
 
-import likelion.beanBa.backendProject.member.Entity.Member;
-import likelion.beanBa.backendProject.member.dto.MemberResponse;
+import com.login.server.global.member.Entity.Member;
+import com.login.server.global.member.dto.MemberResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,14 +1,14 @@
-package likelion.beanBa.backendProject.member.security.oauth;
+package com.login.server.login.global.member.security.oauth;
 
-import likelion.beanBa.backendProject.member.Entity.Member;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import com.login.server.login.global.member.Entity.Member;
 
 public class CustomOAuth2User implements OAuth2User {
     private final Member member;

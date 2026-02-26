@@ -1,7 +1,7 @@
-package likelion.beanBa.backendProject.member.auth.repository;
+package com.login.server.global.member.auth.repository;
 
-import likelion.beanBa.backendProject.member.Entity.Member;
-import likelion.beanBa.backendProject.member.auth.Entity.Auth;
+import com.login.server.global.member.Entity.Member;
+import com.login.server.global.member.auth.Entity.Auth;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

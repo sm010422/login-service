@@ -1,10 +1,10 @@
-package likelion.beanBa.backendProject.member.security.config;
+package com.login.server.login.global.member.security.config;
 
-import likelion.beanBa.backendProject.member.jwt.JwtTokenProvider;
-import likelion.beanBa.backendProject.member.security.filter.JwtAuthenticationFilter;
-import likelion.beanBa.backendProject.member.security.oauth.CustomOAuth2UserService;
-import likelion.beanBa.backendProject.member.security.oauth.OAuth2LoginSuccessHandler;
-import likelion.beanBa.backendProject.member.security.service.CustomUserDetailsService;
+import com.login.server.global.member.jwt.JwtTokenProvider;
+import com.login.server.global.member.security.filter.JwtAuthenticationFilter;
+import com.login.server.global.member.security.oauth.CustomOAuth2UserService;
+import com.login.server.global.member.security.oauth.OAuth2LoginSuccessHandler;
+import com.login.server.global.member.security.service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

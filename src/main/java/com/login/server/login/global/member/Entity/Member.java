@@ -1,4 +1,4 @@
-package likelion.beanBa.backendProject.member.Entity;
+package com.login.server.login.global.member.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;

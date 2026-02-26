@@ -1,4 +1,4 @@
-package likelion.beanBa.backendProject.member.auth.dto;
+package com.login.server.global.member.auth.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;

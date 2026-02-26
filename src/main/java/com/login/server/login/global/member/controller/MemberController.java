@@ -1,17 +1,23 @@
-package likelion.beanBa.backendProject.member.controller;
+package com.login.server.login.global.member.controller;
 
-import likelion.beanBa.backendProject.member.dto.MemberRequest;
-import likelion.beanBa.backendProject.member.dto.MemberResponse;
-import likelion.beanBa.backendProject.member.Entity.Member;
-import likelion.beanBa.backendProject.member.email.service.EmailAuthService;
-import likelion.beanBa.backendProject.member.email.service.EmailService;
-import likelion.beanBa.backendProject.member.repository.MemberRepository;
-import likelion.beanBa.backendProject.member.security.annotation.CurrentUser;
-import likelion.beanBa.backendProject.member.security.service.CustomUserDetails;
-import likelion.beanBa.backendProject.member.service.MemberService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.login.server.login.global.member.Entity.Member;
+import com.login.server.login.global.member.dto.MemberRequest;
+import com.login.server.login.global.member.dto.MemberResponse;
+import com.login.server.login.global.member.repository.MemberRepository;
+import com.login.server.login.global.member.security.annotation.CurrentUser;
+import com.login.server.login.global.member.security.service.CustomUserDetails;
+import com.login.server.login.global.member.service.MemberService;
+
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/member")

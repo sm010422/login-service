@@ -1,12 +1,19 @@
-package likelion.beanBa.backendProject.member.jwt;
-
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+package com.login.server.login.global.member.jwt;
 
 import java.security.Key;
 import java.util.Date;
+
+import javax.crypto.SecretKey;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtTokenProvider {
@@ -66,14 +73,19 @@ public class JwtTokenProvider {
     }
 
     public String getMemberIdFromToken(String token) {
-        return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody().getSubject();
-    }
+            return Jwts.parser()
+                    .verifyWith((SecretKey) key) // setSigningKey 대신 verifyWith 사용
+                    .build()
+                    .parseSignedClaims(token)    // parseClaimsJws 대신 parseSignedClaims 사용
+                    .getPayload()                // getBody 대신 getPayload 사용
+                    .getSubject();
+        }
 
-    private Claims getClaims(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(key)
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
-    }
+        private Claims getClaims(String token) {
+            return Jwts.parser()
+                    .verifyWith((SecretKey) key)
+                    .build()
+                    .parseSignedClaims(token)
+                    .getPayload();
+        }
 }

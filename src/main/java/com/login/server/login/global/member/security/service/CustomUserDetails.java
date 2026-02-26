@@ -1,14 +1,16 @@
-package likelion.beanBa.backendProject.member.security.service;
-
-import likelion.beanBa.backendProject.member.Entity.Member;
-import lombok.Getter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.oauth2.core.user.OAuth2User;
+package com.login.server.login.global.member.security.service;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+
+import com.login.server.login.global.member.Entity.Member;
+
+import lombok.Getter;
 
 @Getter
 public class CustomUserDetails implements UserDetails, OAuth2User {

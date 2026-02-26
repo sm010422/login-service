@@ -1,11 +1,11 @@
-package likelion.beanBa.backendProject.member.security.filter;
+package com.login.server.login.global.member.security.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import likelion.beanBa.backendProject.member.jwt.JwtTokenProvider;
-import likelion.beanBa.backendProject.member.security.service.CustomUserDetailsService;
+import com.login.server.global.member.jwt.JwtTokenProvider;
+import com.login.server.global.member.security.service.CustomUserDetailsService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

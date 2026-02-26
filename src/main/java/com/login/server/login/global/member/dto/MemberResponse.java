@@ -1,6 +1,6 @@
-package likelion.beanBa.backendProject.member.dto;
+package com.login.server.global.member.dto;
 
-import likelion.beanBa.backendProject.member.Entity.Member;
+import com.login.server.global.member.Entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

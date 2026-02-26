@@ -1,15 +1,15 @@
-package likelion.beanBa.backendProject.member.auth.service;
+package com.login.server.global.member.auth.service;
 
-import likelion.beanBa.backendProject.member.auth.Entity.Auth;
-import likelion.beanBa.backendProject.member.auth.dto.JwtToken;
-import likelion.beanBa.backendProject.member.auth.dto.LoginRequest;
-import likelion.beanBa.backendProject.member.auth.dto.LoginResponse;
-import likelion.beanBa.backendProject.member.auth.dto.RefreshTokenRequest;
-import likelion.beanBa.backendProject.member.auth.repository.AuthRepository;
-import likelion.beanBa.backendProject.member.dto.MemberResponse;
-import likelion.beanBa.backendProject.member.jwt.JwtTokenProvider;
-import likelion.beanBa.backendProject.member.Entity.Member;
-import likelion.beanBa.backendProject.member.repository.MemberRepository;
+import com.login.server.global.member.auth.Entity.Auth;
+import com.login.server.global.member.auth.dto.JwtToken;
+import com.login.server.global.member.auth.dto.LoginRequest;
+import com.login.server.global.member.auth.dto.LoginResponse;
+import com.login.server.global.member.auth.dto.RefreshTokenRequest;
+import com.login.server.global.member.auth.repository.AuthRepository;
+import com.login.server.global.member.dto.MemberResponse;
+import com.login.server.global.member.jwt.JwtTokenProvider;
+import com.login.server.global.member.Entity.Member;
+import com.login.server.global.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

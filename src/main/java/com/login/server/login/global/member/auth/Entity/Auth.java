@@ -1,7 +1,7 @@
-package likelion.beanBa.backendProject.member.auth.Entity;
+package com.login.server.login.global.member.auth.Entity;
 
 import jakarta.persistence.*;
-import likelion.beanBa.backendProject.member.Entity.Member;
+import com.login.server.global.member.Entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;

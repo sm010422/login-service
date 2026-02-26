@@ -1,20 +1,22 @@
-package likelion.beanBa.backendProject.member.security.oauth;
-
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import likelion.beanBa.backendProject.member.Entity.Member;
-import likelion.beanBa.backendProject.member.auth.Entity.Auth;
-import likelion.beanBa.backendProject.member.auth.repository.AuthRepository;
-import likelion.beanBa.backendProject.member.jwt.JwtTokenProvider;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
-import org.springframework.stereotype.Component;
+package com.login.server.login.global.member.security.oauth;
 
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+import org.springframework.stereotype.Component;
+
+import com.login.server.login.global.member.Entity.Member;
+import com.login.server.login.global.member.auth.Entity.Auth;
+import com.login.server.login.global.member.auth.repository.AuthRepository;
+import com.login.server.login.global.member.jwt.JwtTokenProvider;
+
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor

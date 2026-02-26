@@ -1,4 +1,4 @@
-package likelion.beanBa.backendProject.member.dto;
+package com.login.server.global.member.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

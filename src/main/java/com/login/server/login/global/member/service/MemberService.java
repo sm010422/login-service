@@ -1,14 +1,16 @@
-package likelion.beanBa.backendProject.member.service;
+package com.login.server.login.global.member.service;
 
-import likelion.beanBa.backendProject.member.dto.MemberRequest;
-import likelion.beanBa.backendProject.member.dto.MemberResponse;
-import likelion.beanBa.backendProject.member.dto.SignupRequest;
-import likelion.beanBa.backendProject.member.Entity.Member;
-import likelion.beanBa.backendProject.member.repository.MemberRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.login.server.login.global.member.Entity.Member;
+import com.login.server.login.global.member.dto.MemberRequest;
+import com.login.server.login.global.member.dto.MemberResponse;
+import com.login.server.login.global.member.dto.SignupRequest;
+import com.login.server.login.global.member.repository.MemberRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
