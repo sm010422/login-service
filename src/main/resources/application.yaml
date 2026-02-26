@@ -3,9 +3,9 @@ spring:
     name: login
 
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/connecteamed_db}
-    username: ${SPRING_DATASOURCE_USERNAME:connecteamed}
-    password: ${SPRING_DATASOURCE_PASSWORD:connecteamed}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/login-service-db}
+    username: ${SPRING_DATASOURCE_USERNAME:login-service}
+    password: ${SPRING_DATASOURCE_PASSWORD:login-service-password}
     driver-class-name: org.postgresql.Driver
 
   security:
