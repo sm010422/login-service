@@ -25,30 +25,52 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-h2console'
-	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-security-oauth2-client'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
-  implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+  // Spring Web & Security
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'org.springframework.boot:spring-boot-starter-security'
+  implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+  // Validation (DTO 검증)
+  implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+  //JWT
   implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
   runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.3'
   runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.3'
-	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.h2database:h2'
-	runtimeOnly 'org.postgresql:postgresql'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-data-redis-test'
-	testImplementation 'org.springframework.boot:spring-boot-starter-security-oauth2-client-test'
-	testImplementation 'org.springframework.boot:spring-boot-starter-security-test'
-	testImplementation 'org.springframework.boot:spring-boot-starter-thymeleaf-test'
-	testImplementation 'org.springframework.boot:spring-boot-starter-validation-test'
-	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+  implementation 'org.springframework.boot:spring-boot-configuration-processor'
+
+  // Persistence JPA
+  implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+  // Database  & Redis
+  implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+  runtimeOnly 'org.postgresql:postgresql'
+  runtimeOnly 'com.h2database:h2'
+
+  // Environment Variables (.env)
+  implementation 'io.github.cdimascio:dotenv-java:3.0.0'
+  implementation 'me.paulschwarz:spring-dotenv:4.0.0'
+
+  // View Template
+  implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+  implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+
+  // Jackson JavaTime module to support java.time types like Instant
+  implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.19.4'
+
+  // Developer Tools & Lombok
+  compileOnly 'org.projectlombok:lombok'
+  annotationProcessor 'org.projectlombok:lombok'
+  developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+  // Test
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+  //Github CICD Health Check
+  implementation 'org.springframework.boot:spring-boot-starter-actuator'
 }
 
 tasks.named('test') {
