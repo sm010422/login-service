@@ -8,6 +8,10 @@ spring:
     password: ${SPRING_DATASOURCE_PASSWORD:login-service-password}
     driver-class-name: org.postgresql.Driver
 
+  output:
+    ansi:
+      enabled: ALWAYS
+
   security:
       oauth2:
         client:
