@@ -1,13 +1,13 @@
 package com.login.server.login.global.member.repository;
 
-import com.login.server.global.member.Entity.Member;
-import com.login.server.global.member.dto.MemberResponse;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-import java.util.Optional;
+import com.login.server.login.global.member.Entity.Member;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
 

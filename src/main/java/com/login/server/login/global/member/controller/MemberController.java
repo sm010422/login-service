@@ -25,9 +25,9 @@ import lombok.RequiredArgsConstructor;
 public class MemberController {
 
     private final MemberService memberService;
-    private final EmailService emailService;
+    // private final EmailService emailService;
     private final MemberRepository memberRepository;
-    private final EmailAuthService emailAuthService;
+    // private final EmailAuthService emailAuthService;
 
     @GetMapping("/me")
     public ResponseEntity<MemberResponse> getMyInfo(
@@ -44,39 +44,39 @@ public class MemberController {
         return ResponseEntity.ok(memberService.updateMember(memberPk, request));
     }
 
-    @PostMapping("/findId")
-    public ResponseEntity<String> findId(
-            @RequestParam String email) {
-        System.out.println(email);
-        emailService.sendVerificationCode(email, null,"findId");
-        return ResponseEntity.ok("가입시 이메일로 아이디 발송.");
-    }
+    // @PostMapping("/findId")
+    // public ResponseEntity<String> findId(
+    //         @RequestParam String email) {
+    //     System.out.println(email);
+    //     emailService.sendVerificationCode(email, null,"findId");
+    //     return ResponseEntity.ok("가입시 이메일로 아이디 발송.");
+    // }
 
-    @PostMapping("/findPassword")
-    public ResponseEntity<String> findPassword(
-            @RequestParam String memberId,
-            @RequestParam String email) {
-        Member member = memberRepository.findByEmail(email)
-                .orElseThrow(() -> new IllegalArgumentException("검색된 회원이 없습니다."));
-        if(!member.getMemberId().equals(memberId)) return ResponseEntity.badRequest().body("아이디와 이메일이 일치하지 않습니다.");
+    // @PostMapping("/findPassword")
+    // public ResponseEntity<String> findPassword(
+    //         @RequestParam String memberId,
+    //         @RequestParam String email) {
+    //     Member member = memberRepository.findByEmail(email)
+    //             .orElseThrow(() -> new IllegalArgumentException("검색된 회원이 없습니다."));
+    //     if(!member.getMemberId().equals(memberId)) return ResponseEntity.badRequest().body("아이디와 이메일이 일치하지 않습니다.");
+    //
+    //     emailService.sendVerificationCode(email, memberId,"findPassword");
+    //     return ResponseEntity.ok("가입시 이메일로 아이디 발송.");
+    // }
 
-        emailService.sendVerificationCode(email, memberId,"findPassword");
-        return ResponseEntity.ok("가입시 이메일로 아이디 발송.");
-    }
-
-    @GetMapping("/findPassword/verify")
-    public ResponseEntity<String> emailVerify(
-            @RequestParam String email,
-            @RequestParam String memberId,
-            @RequestParam String code) {
-        boolean verified = emailService.verifyCode(email, memberId, "findPassword", code);
-        if(verified) {
-            emailAuthService.markEmailAsVerified(email);
-            return ResponseEntity.ok("이메일 인증 성공");
-        } else {
-            return ResponseEntity.badRequest().body("이메일 인증 실패");
-        }
-    }
+    // @GetMapping("/findPassword/verify")
+    // public ResponseEntity<String> emailVerify(
+    //         @RequestParam String email,
+    //         @RequestParam String memberId,
+    //         @RequestParam String code) {
+    //     boolean verified = emailService.verifyCode(email, memberId, "findPassword", code);
+    //     if(verified) {
+    //         emailAuthService.markEmailAsVerified(email);
+    //         return ResponseEntity.ok("이메일 인증 성공");
+    //     } else {
+    //         return ResponseEntity.badRequest().body("이메일 인증 실패");
+    //     }
+    // }
 
     @PostMapping("/changePwd")
     public ResponseEntity<String> changePwd(

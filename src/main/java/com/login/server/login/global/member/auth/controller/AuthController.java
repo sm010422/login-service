@@ -1,19 +1,28 @@
 package com.login.server.login.global.member.auth.controller;
 
-import jakarta.validation.Valid;
-import com.login.server.global.member.auth.dto.*;
-import com.login.server.global.member.auth.service.AuthService;
-import com.login.server.global.member.dto.SignupRequest;
-import com.login.server.global.member.email.service.EmailAuthService;
-import com.login.server.global.member.email.service.EmailService;
-import com.login.server.global.member.repository.MemberRepository;
-import com.login.server.global.member.security.annotation.CurrentUser;
-import com.login.server.global.member.security.service.CustomUserDetails;
-import com.login.server.global.member.service.MemberService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.login.server.login.global.member.auth.dto.JwtToken;
+import com.login.server.login.global.member.auth.dto.LoginRequest;
+import com.login.server.login.global.member.auth.dto.LoginResponse;
+import com.login.server.login.global.member.auth.dto.RefreshTokenRequest;
+import com.login.server.login.global.member.auth.service.AuthService;
+import com.login.server.login.global.member.dto.SignupRequest;
+import com.login.server.login.global.member.repository.MemberRepository;
+import com.login.server.login.global.member.security.annotation.CurrentUser;
+import com.login.server.login.global.member.security.service.CustomUserDetails;
+import com.login.server.login.global.member.service.MemberService;
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -22,8 +31,6 @@ public class AuthController {
 
     private final MemberService memberService;
     private final AuthService authService;
-    private final EmailService emailService;
-    private final EmailAuthService emailAuthService;
     private final MemberRepository memberRepository;
 
     @PostMapping("/login")
@@ -33,41 +40,41 @@ public class AuthController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/signup")
-    public ResponseEntity<String> signup(
-            @RequestBody SignupRequest request) {
-
-        if(!emailAuthService.isEmailVerified(request.getEmail())){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("이메일 인증을 먼저 진행해주세요.");
-        }
-
-        memberService.signup(request);
-        emailAuthService.clearVerified(request.getEmail());
-        return ResponseEntity.ok("회원 가입 완료.");
-    }
-
-    @PostMapping("/signup/email")
-    public ResponseEntity<String> sendEmailVerification(
-            @RequestParam String email) {
-        if(memberRepository.existsByEmail(email)) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 가입된 이메일 입니다.");
-        }
-        emailService.sendVerificationCode(email, null,"signup");
-        return ResponseEntity.ok("이메일 인증 메일을 전송했습니다.");
-    }
-
-    @GetMapping("/signup/verify")
-    public ResponseEntity<String> emailVerify(
-            @RequestParam String email,
-            @RequestParam String code) {
-        boolean verified = emailService.verifyCode(email, null, "signup", code);
-        if(verified) {
-            emailAuthService.markEmailAsVerified(email);
-            return ResponseEntity.ok("이메일 인증 성공");
-        } else {
-            return ResponseEntity.badRequest().body("이메일 인증 실패");
-        }
-    }
+    // @PostMapping("/signup")
+    // public ResponseEntity<String> signup(
+    //         @RequestBody SignupRequest request) {
+    //
+    //     if(!emailAuthService.isEmailVerified(request.getEmail())){
+    //         return ResponseEntity.status(HttpStatus.FORBIDDEN).body("이메일 인증을 먼저 진행해주세요.");
+    //     }
+    //
+    //     memberService.signup(request);
+    //     emailAuthService.clearVerified(request.getEmail());
+    //     return ResponseEntity.ok("회원 가입 완료.");
+    // }
+    //
+    // @PostMapping("/signup/email")
+    // public ResponseEntity<String> sendEmailVerification(
+    //         @RequestParam String email) {
+    //     if(memberRepository.existsByEmail(email)) {
+    //         return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 가입된 이메일 입니다.");
+    //     }
+    //     emailService.sendVerificationCode(email, null,"signup");
+    //     return ResponseEntity.ok("이메일 인증 메일을 전송했습니다.");
+    // }
+    //
+    // @GetMapping("/signup/verify")
+    // public ResponseEntity<String> emailVerify(
+    //         @RequestParam String email,
+    //         @RequestParam String code) {
+    //     boolean verified = emailService.verifyCode(email, null, "signup", code);
+    //     if(verified) {
+    //         emailAuthService.markEmailAsVerified(email);
+    //         return ResponseEntity.ok("이메일 인증 성공");
+    //     } else {
+    //         return ResponseEntity.badRequest().body("이메일 인증 실패");
+    //     }
+    // }
 
     @PostMapping("/refresh")
     public ResponseEntity<JwtToken> refresh (

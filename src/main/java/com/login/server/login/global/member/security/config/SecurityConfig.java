@@ -1,11 +1,7 @@
 package com.login.server.login.global.member.security.config;
 
-import com.login.server.global.member.jwt.JwtTokenProvider;
-import com.login.server.global.member.security.filter.JwtAuthenticationFilter;
-import com.login.server.global.member.security.oauth.CustomOAuth2UserService;
-import com.login.server.global.member.security.oauth.OAuth2LoginSuccessHandler;
-import com.login.server.global.member.security.service.CustomUserDetailsService;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -26,7 +22,13 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.List;
+import com.login.server.login.global.member.jwt.JwtTokenProvider;
+import com.login.server.login.global.member.security.filter.JwtAuthenticationFilter;
+import com.login.server.login.global.member.security.oauth.CustomOAuth2UserService;
+import com.login.server.login.global.member.security.oauth.OAuth2LoginSuccessHandler;
+import com.login.server.login.global.member.security.service.CustomUserDetailsService;
+
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @RequiredArgsConstructor

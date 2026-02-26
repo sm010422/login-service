@@ -1,6 +1,7 @@
-package com.login.server.global.member.auth.dto;
+package com.login.server.login.global.member.auth.dto;
 
-import com.login.server.global.member.dto.MemberResponse;
+import com.login.server.login.global.member.dto.MemberResponse;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

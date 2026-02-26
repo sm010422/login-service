@@ -1,19 +1,21 @@
-package com.login.server.global.member.auth.service;
+package com.login.server.login.global.member.auth.service;
 
-import com.login.server.global.member.auth.Entity.Auth;
-import com.login.server.global.member.auth.dto.JwtToken;
-import com.login.server.global.member.auth.dto.LoginRequest;
-import com.login.server.global.member.auth.dto.LoginResponse;
-import com.login.server.global.member.auth.dto.RefreshTokenRequest;
-import com.login.server.global.member.auth.repository.AuthRepository;
-import com.login.server.global.member.dto.MemberResponse;
-import com.login.server.global.member.jwt.JwtTokenProvider;
-import com.login.server.global.member.Entity.Member;
-import com.login.server.global.member.repository.MemberRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.login.server.login.global.member.Entity.Member;
+import com.login.server.login.global.member.auth.Entity.Auth;
+import com.login.server.login.global.member.auth.dto.JwtToken;
+import com.login.server.login.global.member.auth.dto.LoginRequest;
+import com.login.server.login.global.member.auth.dto.LoginResponse;
+import com.login.server.login.global.member.auth.dto.RefreshTokenRequest;
+import com.login.server.login.global.member.auth.repository.AuthRepository;
+import com.login.server.login.global.member.dto.MemberResponse;
+import com.login.server.login.global.member.jwt.JwtTokenProvider;
+import com.login.server.login.global.member.repository.MemberRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
