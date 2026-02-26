@@ -2,11 +2,24 @@ spring:
   application:
     name: login
 
+  profiles:
+    active: local
+
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/login-service-db}
     username: ${SPRING_DATASOURCE_USERNAME:login-service}
     password: ${SPRING_DATASOURCE_PASSWORD:login-service-password}
     driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: ture
+    properties:
+      hibernate:
+        format_sql: true
+        highlight_sql: true
+    open-in-view: false
 
   output:
     ansi:
@@ -32,3 +45,27 @@ spring:
               scope:
                 - account_email
                 - profile_nickname
+
+jwt:
+  token:
+    secretKey: ${JWT_SECRET_KEY}
+    expiration:
+      access: 14400000      #4시간
+      refresh: 1209600000   #14일
+
+server:
+  port: 8080
+  forward-headers-strategy: framework
+
+app:
+  oauth2:
+    frontend-redirect-url: ${FRONTEND_REDIRECT_URL:http://localhost:3000/oauth2/redirect}
+
+logging:
+  exception-conversion-word: "%wEx{0}"
+
+management:
+  endpoints: 
+    web:
+      exposure:
+        include: health
