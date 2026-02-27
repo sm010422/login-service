@@ -67,6 +67,9 @@ dependencies {
   annotationProcessor 'org.projectlombok:lombok'
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
+  // Servlet API (IDE resolution helper for Jakarta namespace)
+  compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+
   // Test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
