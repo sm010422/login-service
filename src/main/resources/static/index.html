@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소셜 로그인 테스트</title>
+    <style>
+        body {
+            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .login-container h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .login-container p {
+            color: #777;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: opacity 0.2s;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+        .btn-google {
+            background-color: #ffffff;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        .btn-kakao {
+            background-color: #FEE500;
+            color: #000000;
+        }
+        .btn-naver {
+            background-color: #03C75A;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>환영합니다! 👋</h2>
+    <p>소셜 계정으로 간편하게 로그인하세요.</p>
+
+    <a href="/oauth2/authorization/google" class="btn btn-google">Google 로그인</a>
+    <a href="/oauth2/authorization/kakao" class="btn btn-kakao">카카오 로그인</a>
+    <a href="/oauth2/authorization/naver" class="btn btn-naver">네이버 로그인</a>
+</div>
+
+</body>
+</html>
