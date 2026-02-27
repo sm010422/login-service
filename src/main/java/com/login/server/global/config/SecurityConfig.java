@@ -1,4 +1,4 @@
-package com.login.server.domain.member.security.config;
+package com.login.server.global.config;
 
 import java.util.List;
 
