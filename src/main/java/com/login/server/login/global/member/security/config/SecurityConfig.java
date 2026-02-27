@@ -69,7 +69,8 @@ public class SecurityConfig {
             ).permitAll()
             .requestMatchers("/api/health/**").permitAll() //배포 헬스체크
             .requestMatchers(
-                    "api/chatting/**",
+                    "/",
+                    "/index.html",
                     "/*.html",
                     "/js/**", // chatting 테스트 하느라고 잠시 넣어놨습니다.
                     "/api/ws-chat",
