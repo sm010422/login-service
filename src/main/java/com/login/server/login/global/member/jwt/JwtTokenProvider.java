@@ -23,11 +23,12 @@ public class JwtTokenProvider {
     private final long refreshTokenValidity;
 
     public JwtTokenProvider(
-            @Value("${jwt.secret}") String secret,
-            @Value("${jwt.access-token-validity}") long accessTokenValidity,
-            @Value("${jwt.refresh-token-validity}") long refreshTokenValidity) {
+            @Value("${jwt.token.secretKey}") String secret,
+            @Value("${jwt.token.expiration.access}") long accessTokenValidity,
+            @Value("${jwt.token.expiration.refresh}") long refreshTokenValidity) {
 
-        this.key = Keys.hmacShaKeyFor(secret.getBytes());
+        byte[] keyBytes = io.jsonwebtoken.io.Decoders.BASE64.decode(secret);
+        this.key = Keys.hmacShaKeyFor(keyBytes);
         this.accessTokenValidity = accessTokenValidity;
         this.refreshTokenValidity =refreshTokenValidity;
     }
