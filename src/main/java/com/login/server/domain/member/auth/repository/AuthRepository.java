@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.login.server.domain.member.Entity.Member;
+import com.login.server.domain.member.entity.Member;
 import com.login.server.domain.member.auth.Entity.Auth;
 
 public interface AuthRepository extends JpaRepository<Auth, Long> {

@@ -8,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
-import com.login.server.domain.member.Entity.Member;
+import com.login.server.domain.member.entity.Member;
 
 public class CustomOAuth2User implements OAuth2User {
     private final Member member;

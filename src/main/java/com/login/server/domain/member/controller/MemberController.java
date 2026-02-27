@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.login.server.domain.member.Entity.Member;
+import com.login.server.domain.member.entity.Member;
 import com.login.server.domain.member.dto.MemberRequest;
 import com.login.server.domain.member.dto.MemberResponse;
 import com.login.server.domain.member.repository.MemberRepository;

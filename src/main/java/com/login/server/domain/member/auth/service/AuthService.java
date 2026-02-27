@@ -4,7 +4,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.login.server.domain.member.Entity.Member;
+import com.login.server.domain.member.entity.Member;
 import com.login.server.domain.member.auth.Entity.Auth;
 import com.login.server.domain.member.auth.dto.JwtToken;
 import com.login.server.domain.member.auth.dto.LoginRequest;

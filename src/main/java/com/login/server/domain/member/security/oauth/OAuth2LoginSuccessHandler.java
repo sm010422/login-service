@@ -8,7 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import com.login.server.domain.member.Entity.Member;
+import com.login.server.domain.member.entity.Member;
 import com.login.server.domain.member.auth.Entity.Auth;
 import com.login.server.domain.member.auth.repository.AuthRepository;
 import com.login.server.domain.member.jwt.JwtTokenProvider;

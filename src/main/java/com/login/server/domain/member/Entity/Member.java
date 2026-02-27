@@ -1,4 +1,4 @@
-package com.login.server.domain.member.Entity;
+package com.login.server.domain.member.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
