@@ -1,4 +1,4 @@
-package com.login.server.login.global.member.security.annotation;
+package com.login.server.domain.member.security.annotation;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 

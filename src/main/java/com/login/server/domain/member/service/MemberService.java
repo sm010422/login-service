@@ -1,14 +1,14 @@
-package com.login.server.login.global.member.service;
+package com.login.server.domain.member.service;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.login.server.login.global.member.Entity.Member;
-import com.login.server.login.global.member.dto.MemberRequest;
-import com.login.server.login.global.member.dto.MemberResponse;
-import com.login.server.login.global.member.dto.SignupRequest;
-import com.login.server.login.global.member.repository.MemberRepository;
+import com.login.server.domain.member.Entity.Member;
+import com.login.server.domain.member.dto.MemberRequest;
+import com.login.server.domain.member.dto.MemberResponse;
+import com.login.server.domain.member.dto.SignupRequest;
+import com.login.server.domain.member.repository.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
 

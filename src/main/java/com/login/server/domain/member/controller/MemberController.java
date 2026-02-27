@@ -1,4 +1,4 @@
-package com.login.server.login.global.member.controller;
+package com.login.server.domain.member.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -6,16 +6,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.login.server.login.global.member.Entity.Member;
-import com.login.server.login.global.member.dto.MemberRequest;
-import com.login.server.login.global.member.dto.MemberResponse;
-import com.login.server.login.global.member.repository.MemberRepository;
-import com.login.server.login.global.member.security.annotation.CurrentUser;
-import com.login.server.login.global.member.security.service.CustomUserDetails;
-import com.login.server.login.global.member.service.MemberService;
+import com.login.server.domain.member.Entity.Member;
+import com.login.server.domain.member.dto.MemberRequest;
+import com.login.server.domain.member.dto.MemberResponse;
+import com.login.server.domain.member.repository.MemberRepository;
+import com.login.server.domain.member.security.annotation.CurrentUser;
+import com.login.server.domain.member.security.service.CustomUserDetails;
+import com.login.server.domain.member.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
 

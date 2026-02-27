@@ -1,4 +1,4 @@
-package com.login.server.login.global.member.security.oauth;
+package com.login.server.domain.member.security.oauth;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -8,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
-import com.login.server.login.global.member.Entity.Member;
+import com.login.server.domain.member.Entity.Member;
 
 public class CustomOAuth2User implements OAuth2User {
     private final Member member;

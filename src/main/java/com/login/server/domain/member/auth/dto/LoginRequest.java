@@ -1,4 +1,4 @@
-package com.login.server.login.global.member.auth.dto;
+package com.login.server.domain.member.auth.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;

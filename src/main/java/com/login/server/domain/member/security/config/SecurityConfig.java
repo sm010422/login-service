@@ -1,4 +1,4 @@
-package com.login.server.login.global.member.security.config;
+package com.login.server.domain.member.security.config;
 
 import java.util.List;
 
@@ -22,11 +22,11 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.login.server.login.global.member.jwt.JwtTokenProvider;
-import com.login.server.login.global.member.security.filter.JwtAuthenticationFilter;
-import com.login.server.login.global.member.security.oauth.CustomOAuth2UserService;
-import com.login.server.login.global.member.security.oauth.OAuth2LoginSuccessHandler;
-import com.login.server.login.global.member.security.service.CustomUserDetailsService;
+import com.login.server.domain.member.jwt.JwtTokenProvider;
+import com.login.server.domain.member.security.filter.JwtAuthenticationFilter;
+import com.login.server.domain.member.security.oauth.CustomOAuth2UserService;
+import com.login.server.domain.member.security.oauth.OAuth2LoginSuccessHandler;
+import com.login.server.domain.member.security.service.CustomUserDetailsService;
 
 import lombok.RequiredArgsConstructor;
 

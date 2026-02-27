@@ -1,4 +1,4 @@
-package com.login.server.login.global.member.security.filter;
+package com.login.server.domain.member.security.filter;
 
 import java.io.IOException;
 
@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.login.server.login.global.member.jwt.JwtTokenProvider;
-import com.login.server.login.global.member.security.service.CustomUserDetailsService;
+import com.login.server.domain.member.jwt.JwtTokenProvider;
+import com.login.server.domain.member.security.service.CustomUserDetailsService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

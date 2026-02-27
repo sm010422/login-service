@@ -1,12 +1,12 @@
-package com.login.server.login.global.member.security.service;
+package com.login.server.domain.member.security.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.login.server.login.global.member.Entity.Member;
-import com.login.server.login.global.member.repository.MemberRepository;
+import com.login.server.domain.member.Entity.Member;
+import com.login.server.domain.member.repository.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
 

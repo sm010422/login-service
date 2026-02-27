@@ -1,4 +1,4 @@
-package com.login.server.login.global.member.security.service;
+package com.login.server.domain.member.security.service;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -8,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
-import com.login.server.login.global.member.Entity.Member;
+import com.login.server.domain.member.Entity.Member;
 
 import lombok.Getter;
 

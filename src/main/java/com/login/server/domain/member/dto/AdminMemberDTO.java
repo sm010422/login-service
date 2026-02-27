@@ -1,7 +1,7 @@
-package com.login.server.login.global.member.dto;
+package com.login.server.domain.member.dto;
 
 
-import com.login.server.login.global.member.Entity.Member;
+import com.login.server.domain.member.Entity.Member;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

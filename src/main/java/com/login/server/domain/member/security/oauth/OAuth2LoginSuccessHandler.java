@@ -1,4 +1,4 @@
-package com.login.server.login.global.member.security.oauth;
+package com.login.server.domain.member.security.oauth;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -8,10 +8,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import com.login.server.login.global.member.Entity.Member;
-import com.login.server.login.global.member.auth.Entity.Auth;
-import com.login.server.login.global.member.auth.repository.AuthRepository;
-import com.login.server.login.global.member.jwt.JwtTokenProvider;
+import com.login.server.domain.member.Entity.Member;
+import com.login.server.domain.member.auth.Entity.Auth;
+import com.login.server.domain.member.auth.repository.AuthRepository;
+import com.login.server.domain.member.jwt.JwtTokenProvider;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;

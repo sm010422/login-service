@@ -1,4 +1,4 @@
-package com.login.server.login.global.member.jwt;
+package com.login.server.domain.member.jwt;
 
 import java.security.Key;
 import java.util.Date;
