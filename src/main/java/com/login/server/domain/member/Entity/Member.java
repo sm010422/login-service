@@ -1,7 +1,21 @@
 package com.login.server.domain.member.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+import com.login.server.domain.member.enums.SocialType;
+import com.login.server.global.entity.BaseEntity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "member")
@@ -10,7 +24,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Member {
+public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +33,6 @@ public class Member {
 
     @Column(name = "member_id", nullable = false, unique = true, length = 255)
     private String memberId;
-
-    @Column(name = "provider", nullable = true, length = 1)
-    private String provider; //ex 'R' (Local), 'G' (Google), 'K' (Kakao)
 
     @Column(name = "nickname", nullable = false, length = 100)
     private String nickname;
@@ -34,6 +45,10 @@ public class Member {
 
     @Column(name = "role", nullable = false, length = 255)
     private String role;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="social_type",nullable = false)
+    private SocialType socialType;
 
     @Column(name = "use_yn", length = 1)
     private String useYn;
