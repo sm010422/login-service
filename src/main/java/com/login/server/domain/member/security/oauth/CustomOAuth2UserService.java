@@ -9,6 +9,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import com.login.server.domain.member.entity.Member;
+import com.login.server.domain.member.enums.SocialType;
 import com.login.server.domain.member.repository.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 
         OAuth2User oAuth2User = super.loadUser(userRequest);
+        Map<String,Object> attributes = oAuth2User.getAttributes();
 
         // 소셜 로그인 구분
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
@@ -31,20 +33,22 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         String providerId = null;
         String email = null;
         String nickname = null;
+        SocialType socialType = null;
 
-        Map<String,Object> attrs = oAuth2User.getAttributes();
 
         if("google".equals(registrationId)) {
-            providerId = String.valueOf(attrs.get("sub"));
-            email = String.valueOf(attrs.get("email"));
-            nickname = String.valueOf(attrs.get("name"));
+            providerId = String.valueOf(attributes.get("sub"));
+            email = String.valueOf(attributes.get("email"));
+            nickname = String.valueOf(attributes.get("name"));
             provider = "G";
+            socialType = SocialType.GOOGLE;
         } else if ("kakao".equals(registrationId)) {
             provider = "K";
-            providerId = String.valueOf(attrs.get("id"));
+            socialType = SocialType.KAKAO;
+            providerId = String.valueOf(attributes.get("id"));
 
             @SuppressWarnings("unchecked")
-            Map<String,Object> kakaoAccount = (Map<String,Object>) attrs.get("kakao_account");
+            Map<String,Object> kakaoAccount = (Map<String,Object>) attributes.get("kakao_account");
             if (kakaoAccount != null) {
                 email = String.valueOf(kakaoAccount.get("email"));
 
@@ -60,7 +64,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             throw new OAuth2AuthenticationException("소셜 로그인 실패 : 필수 정보 누락");
         }
 
-        final String finalProvider = provider;
+
+        final SocialType finalSocialType = socialType;
         final String finalProviderId = providerId;
         final String finalEmail = email;
         final String finalNickname = nickname;
@@ -69,7 +74,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
                 .orElseGet(() -> memberRepository.save(
                         Member.builder()
                                 .email(finalEmail)
-                                .provider(finalProvider)
+                                .socialType(finalSocialType)
                                 .memberId(finalProviderId)
                                 .password("temp")
                                 .nickname(finalNickname != null ? finalNickname : "temp")

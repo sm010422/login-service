@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.login.server.domain.member.entity.Member;
+import com.login.server.domain.member.enums.SocialType;
 import com.login.server.domain.member.dto.MemberRequest;
 import com.login.server.domain.member.dto.MemberResponse;
 import com.login.server.domain.member.dto.SignupRequest;
@@ -35,7 +36,7 @@ public class MemberService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .latitude(request.getLatitude())
                 .longitude(request.getLongitude())
-                .provider("R")
+                .socialType(SocialType.LOCAL)
                 .useYn("Y")
                 .deleteYn("N")
                 .role("member")
