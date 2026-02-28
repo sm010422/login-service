@@ -1,6 +1,7 @@
 package com.login.server.domain.member.dto;
 
 import com.login.server.domain.member.entity.Member;
+import com.login.server.domain.member.enums.SocialType;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +12,7 @@ public class MemberResponse {
     private String memberId;
     private String email;
     private String nickname;
-    private String provider;
+    private SocialType socialType;
     private String role;
     private Double latitude;
     private Double longitude;
@@ -21,7 +22,7 @@ public class MemberResponse {
                 member.getMemberId(),
                 member.getEmail(),
                 member.getNickname(),
-                member.getProvider(),
+                member.getSocialType(),
                 member.getRole(),
                 member.getLatitude(),
                 member.getLongitude()

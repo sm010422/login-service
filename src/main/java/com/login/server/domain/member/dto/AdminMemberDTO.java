@@ -2,6 +2,7 @@ package com.login.server.domain.member.dto;
 
 
 import com.login.server.domain.member.entity.Member;
+import com.login.server.domain.member.enums.SocialType;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,7 @@ public class AdminMemberDTO {
 
     private String memberId;
 
-    private String provider; // 'R' (Local), 'G' (Google), 'K' (Kakao)
+    private SocialType socialType; // LOCAL,GOOGLE,NAVER,KAKAO
 
     private String nickname;
 
@@ -42,7 +43,7 @@ public class AdminMemberDTO {
         return new AdminMemberDTO(
                 member.getMemberPk(),
                 member.getMemberId(),
-                member.getProvider(),
+                member.getSocialType(),
                 member.getNickname(),
                 member.getEmail(),
                 member.getPassword(),
