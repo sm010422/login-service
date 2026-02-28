@@ -8,13 +8,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.login.server.domain.member.entity.Member;
+import com.login.server.domain.member.enums.SocialType;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
     Optional<Member> findByMemberPk(Long memberPk);
     Optional<Member> findByEmail(String email);
     Optional<Member> findByMemberId(String memberId);
-    Optional<Member> findByEmailAndProvider(String email, String provider);
+    Optional<Member> findByEmailAndSocialType(String email, SocialType socialType);
     boolean existsByEmail(String email);
     boolean existsByMemberId(String memberId);
     List<Member> findByDeleteYn(String deleteYn);
