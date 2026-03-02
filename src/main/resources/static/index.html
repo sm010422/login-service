@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>소셜 로그인 테스트</title>
     <style>
+        /* 기존 스타일 유지 */
         body {
             font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
             background-color: #f4f7f6;
@@ -22,15 +23,8 @@
             text-align: center;
             width: 300px;
         }
-        .login-container h2 {
-            margin-bottom: 10px;
-            color: #333;
-        }
-        .login-container p {
-            color: #777;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
+        .login-container h2 { margin-bottom: 10px; color: #333; }
+        .login-container p { color: #777; margin-bottom: 30px; font-size: 14px; }
         .btn {
             display: block;
             width: 100%;
@@ -42,35 +36,85 @@
             font-size: 16px;
             box-sizing: border-box;
             transition: opacity 0.2s;
+            cursor: pointer;
         }
-        .btn:hover {
-            opacity: 0.8;
-        }
-        .btn-google {
-            background-color: #ffffff;
-            color: #333;
-            border: 1px solid #ddd;
-        }
-        .btn-kakao {
-            background-color: #FEE500;
-            color: #000000;
-        }
-        .btn-naver {
-            background-color: #03C75A;
-            color: #ffffff;
-        }
+        .btn:hover { opacity: 0.8; }
+        .btn-google { background-color: #ffffff; color: #333; border: 1px solid #ddd; }
+        .btn-kakao { background-color: #FEE500; color: #000000; }
+        .btn-naver { background-color: #03C75A; color: #ffffff; }
+        .btn-logout { background-color: #ff4d4d; color: white; border: none; margin-top: 20px; }
+
+        /* 상태에 따른 화면 제어 */
+        #login-form { display: block; }
+        #user-info { display: none; }
     </style>
 </head>
 <body>
 
 <div class="login-container">
-    <h2>환영합니다! 👋</h2>
-    <p>소셜 계정으로 간편하게 로그인하세요.</p>
+    <div id="login-form">
+        <h2>환영합니다! 👋</h2>
+        <p>소셜 계정으로 간편하게 로그인하세요.</p>
+        <a href="/oauth2/authorization/google" class="btn btn-google">Google 로그인</a>
+        <a href="/oauth2/authorization/kakao" class="btn btn-kakao">카카오 로그인</a>
+        <a href="/oauth2/authorization/naver" class="btn btn-naver">네이버 로그인</a>
+    </div>
 
-    <a href="/oauth2/authorization/google" class="btn btn-google">Google 로그인</a>
-    <a href="/oauth2/authorization/kakao" class="btn btn-kakao">카카오 로그인</a>
-    <a href="/oauth2/authorization/naver" class="btn btn-naver">네이버 로그인</a>
+    <div id="user-info">
+        <h2>로그인 성공! 🎉</h2>
+        <p>서비스를 이용하실 수 있습니다.</p>
+        <div id="token-display" style="word-break: break-all; font-size: 10px; color: #aaa; margin-bottom: 20px;"></div>
+        <button onclick="handleLogout()" class="btn btn-logout">로그아웃</button>
+    </div>
 </div>
+
+<script>
+    // 1. 페이지 로드 시 실행
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const tokenFromUrl = urlParams.get('accessToken');
+
+        // URL에 토큰이 있다면 (방금 로그인 성공)
+        if (tokenFromUrl) {
+            localStorage.setItem('accessToken', tokenFromUrl);
+            // 주소창 깔끔하게 정리
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        checkLoginStatus();
+    };
+
+    // 2. 로그인 상태 체크 함수
+    function checkLoginStatus() {
+        const token = localStorage.getItem('accessToken');
+        const loginForm = document.getElementById('login-form');
+        const userInfo = document.getElementById('user-info');
+        const tokenDisplay = document.getElementById('token-display');
+
+        if (token) {
+            // 로그인 된 상태
+            loginForm.style.display = 'none';
+            userInfo.style.display = 'block';
+            tokenDisplay.innerText = "저장된 토큰: " + token.substring(0, 30) + "...";
+            console.log("현재 로그인 상태입니다.");
+        } else {
+            // 로그인 안 된 상태
+            loginForm.style.display = 'block';
+            userInfo.style.display = 'none';
+            console.log("로그인이 필요합니다.");
+        }
+    }
+
+    // 3. 로그아웃 처리 함수
+    function handleLogout() {
+        if (confirm("로그아웃 하시겠습니까?")) {
+            localStorage.removeItem('accessToken');
+            // 필요 시 서버에 로그아웃 요청을 보내거나 세션 쿠키 삭제 로직 추가 가능
+            alert("로그아웃 되었습니다.");
+            location.reload(); // 페이지 새로고침하여 로그인 화면으로 복귀
+        }
+    }
+</script>
 
 </body>
 </html>
