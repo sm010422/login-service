@@ -46,8 +46,8 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
                 .ifPresentOrElse(auth -> auth.updateToken(refreshToken),
                         () -> authRepository.save(new Auth(member,refreshToken)));
 
-        String redirectUrl = "https://beanba.store/oauth2/callback"
-                +"?accessToken="+ URLEncoder.encode(accessToken, StandardCharsets.UTF_8);
+        String redirectUrl = "/index.html?accessToken="
+                + URLEncoder.encode(accessToken, StandardCharsets.UTF_8);
 
         getRedirectStrategy().sendRedirect(request, response, redirectUrl);
     }
