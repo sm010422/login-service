@@ -5,23 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>소셜 로그인 테스트</title>
     <style>
-        /* 기존 스타일 유지 */
         body {
             font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
             background-color: #f4f7f6;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
         }
         .login-container {
             background-color: white;
-            padding: 50px 40px;
+            padding: 40px;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 300px;
+            width: 450px; /* 토큰 가독성을 위해 너비를 조금 넓혔습니다 */
         }
         .login-container h2 { margin-bottom: 10px; color: #333; }
         .login-container p { color: #777; margin-bottom: 30px; font-size: 14px; }
@@ -37,14 +36,38 @@
             box-sizing: border-box;
             transition: opacity 0.2s;
             cursor: pointer;
+            border: none;
         }
         .btn:hover { opacity: 0.8; }
         .btn-google { background-color: #ffffff; color: #333; border: 1px solid #ddd; }
         .btn-kakao { background-color: #FEE500; color: #000000; }
         .btn-naver { background-color: #03C75A; color: #ffffff; }
-        .btn-logout { background-color: #ff4d4d; color: white; border: none; margin-top: 20px; }
+        .btn-logout { background-color: #ff4d4d; color: white; margin-top: 20px; }
+        
+        /* 토큰 표시 영역 스타일 개선 */
+        .token-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: left;
+            margin-bottom: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 12px;
+            color: #495057;
+            white-space: pre-wrap;
+        }
+        .token-title {
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 5px;
+            color: #212529;
+            display: block;
+        }
 
-        /* 상태에 따른 화면 제어 */
         #login-form { display: block; }
         #user-info { display: none; }
     </style>
@@ -55,63 +78,68 @@
     <div id="login-form">
         <h2>환영합니다! 👋</h2>
         <p>소셜 계정으로 간편하게 로그인하세요.</p>
-        <a href="/oauth2/authorization/google" class="btn btn-google">Google 로그인</a>
-        <a href="/oauth2/authorization/kakao" class="btn btn-kakao">카카오 로그인</a>
-        <a href="/oauth2/authorization/naver" class="btn btn-naver">네이버 로그인</a>
+        <a href="/oauth2/authorization/google?prompt=select_account" class="btn btn-google">Google 로그인</a>
+
+        <a href="/oauth2/authorization/kakao?prompt=login" class="btn btn-kakao">카카오 로그인</a>
+
+        <a href="/oauth2/authorization/naver?auth_type=reprompt" class="btn btn-naver">네이버 로그인</a>
     </div>
 
     <div id="user-info">
         <h2>로그인 성공! 🎉</h2>
-        <p>서비스를 이용하실 수 있습니다.</p>
-        <div id="token-display" style="word-break: break-all; font-size: 10px; color: #aaa; margin-bottom: 20px;"></div>
-        <button onclick="handleLogout()" class="btn btn-logout">로그아웃</button>
+        <p>현재 저장된 인증 토큰 정보입니다.</p>
+        
+        <div class="token-box">
+            <span class="token-title">[Access Token]</span>
+            <div id="access-token-display">없음</div>
+        </div>
+
+        <button onclick="handleLogout()" class="btn btn-logout">로그아웃 (토큰 삭제)</button>
     </div>
 </div>
 
 <script>
-    // 1. 페이지 로드 시 실행
     window.onload = function() {
         const urlParams = new URLSearchParams(window.location.search);
         const tokenFromUrl = urlParams.get('accessToken');
 
-        // URL에 토큰이 있다면 (방금 로그인 성공)
         if (tokenFromUrl) {
             localStorage.setItem('accessToken', tokenFromUrl);
-            // 주소창 깔끔하게 정리
             window.history.replaceState({}, document.title, window.location.pathname);
         }
 
         checkLoginStatus();
     };
 
-    // 2. 로그인 상태 체크 함수
     function checkLoginStatus() {
         const token = localStorage.getItem('accessToken');
         const loginForm = document.getElementById('login-form');
         const userInfo = document.getElementById('user-info');
-        const tokenDisplay = document.getElementById('token-display');
+        const accessTokenDisplay = document.getElementById('access-token-display');
 
         if (token) {
-            // 로그인 된 상태
             loginForm.style.display = 'none';
             userInfo.style.display = 'block';
-            tokenDisplay.innerText = "저장된 토큰: " + token.substring(0, 30) + "...";
+            // 토큰 전체를 크고 명확하게 표시
+            accessTokenDisplay.innerText = token;
             console.log("현재 로그인 상태입니다.");
         } else {
-            // 로그인 안 된 상태
             loginForm.style.display = 'block';
             userInfo.style.display = 'none';
             console.log("로그인이 필요합니다.");
         }
     }
 
-    // 3. 로그아웃 처리 함수
     function handleLogout() {
-        if (confirm("로그아웃 하시겠습니까?")) {
+        if (confirm("로그아웃 하시겠습니까? 저장된 모든 토큰이 삭제됩니다.")) {
+            // Access Token 삭제
             localStorage.removeItem('accessToken');
-            // 필요 시 서버에 로그아웃 요청을 보내거나 세션 쿠키 삭제 로직 추가 가능
+            
+            // 만약 refreshToken이 쿠키가 아닌 로컬스토리지에 저장된다면 아래 코드도 활성화
+            // localStorage.removeItem('refreshToken');
+            
             alert("로그아웃 되었습니다.");
-            location.reload(); // 페이지 새로고침하여 로그인 화면으로 복귀
+            location.reload();
         }
     }
 </script>
